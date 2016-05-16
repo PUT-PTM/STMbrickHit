@@ -5,9 +5,9 @@ uint8_t acc_x = 0;
 uint8_t acc_y = 0;
 uint8_t acc_z = 0;
 
-#define AKC_ReadX(void)	LIS302DL_Read(&acc_x, LIS302DL_OUT_X_ADDR, 1)
-#define AKC_ReadY(void)	LIS302DL_Read(&acc_y, LIS302DL_OUT_Y_ADDR, 1)
-#define AKC_ReadZ(void)	LIS302DL_Read(&acc_z, LIS302DL_OUT_Z_ADDR, 1)
+//#define AKC_ReadX(void)	LIS302DL_Read(&acc_x, LIS302DL_OUT_X_ADDR, 1)
+//#define AKC_ReadY(void)	LIS302DL_Read(&acc_y, LIS302DL_OUT_Y_ADDR, 1)
+//#define AKC_ReadZ(void)	LIS302DL_Read(&acc_z, LIS302DL_OUT_Z_ADDR, 1)
 
 void AKC_Init()
 {
@@ -22,9 +22,12 @@ void AKC_Init()
 
 void AktualizujAKC()
 {
-	AKC_ReadX();
-	AKC_ReadY();
-	AKC_ReadZ();
+	LIS302DL_Read(&acc_x, LIS302DL_OUT_X_ADDR, 1);
+	LIS302DL_Read(&acc_y, LIS302DL_OUT_Y_ADDR, 1);
+	LIS302DL_Read(&acc_z, LIS302DL_OUT_Z_ADDR, 1);
+	//AKC_ReadX();
+	//AKC_ReadY();
+	//AKC_ReadZ();
 }
 
 #endif

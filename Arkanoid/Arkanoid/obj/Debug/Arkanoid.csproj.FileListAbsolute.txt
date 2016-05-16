@@ -1,0 +1,9 @@
+c:\users\user\documents\visual studio 2013\Projects\Arkanoid\Arkanoid\bin\Debug\Arkanoid.exe.config
+c:\users\user\documents\visual studio 2013\Projects\Arkanoid\Arkanoid\bin\Debug\Arkanoid.exe
+c:\users\user\documents\visual studio 2013\Projects\Arkanoid\Arkanoid\bin\Debug\Arkanoid.pdb
+c:\users\user\documents\visual studio 2013\Projects\Arkanoid\Arkanoid\obj\Debug\Arkanoid.csprojResolveAssemblyReference.cache
+c:\users\user\documents\visual studio 2013\Projects\Arkanoid\Arkanoid\obj\Debug\Arkanoid.Form1.resources
+c:\users\user\documents\visual studio 2013\Projects\Arkanoid\Arkanoid\obj\Debug\Arkanoid.Properties.Resources.resources
+c:\users\user\documents\visual studio 2013\Projects\Arkanoid\Arkanoid\obj\Debug\Arkanoid.csproj.GenerateResource.Cache
+c:\users\user\documents\visual studio 2013\Projects\Arkanoid\Arkanoid\obj\Debug\Arkanoid.exe
+c:\users\user\documents\visual studio 2013\Projects\Arkanoid\Arkanoid\obj\Debug\Arkanoid.pdb

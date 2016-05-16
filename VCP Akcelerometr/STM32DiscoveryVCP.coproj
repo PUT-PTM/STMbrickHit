@@ -35,7 +35,7 @@
           <Memory name="IROM2" type="ReadOnly" size="" startValue=""/>
           <Memory name="IRAM2" type="ReadWrite" size="0x00010000" startValue="0x10000000"/>
         </MemoryAreas>
-        <LocateLinkFile path="../../../../coocox/coide/configuration/programdata/stm32discoveryvcp/arm-gcc-link.ld" type="0"/>
+        <LocateLinkFile path="../../../../../../coocox/coide/configuration/programdata/stm32discoveryvcp/arm-gcc-link.ld" type="0"/>
       </Link>
       <Output>
         <Option name="OutputFileType" value="0"/>
@@ -119,20 +119,18 @@
     <File name="cmsis_lib/source/stm32f4xx_rtc.c" path="cmsis_lib/source/stm32f4xx_rtc.c" type="1"/>
     <File name="cmsis_lib/include/stm32f4xx_rcc.h" path="cmsis_lib/include/stm32f4xx_rcc.h" type="1"/>
     <File name="usb_lib/otg/usb_dcd_int.h" path="usb_lib/otg/usb_dcd_int.h" type="1"/>
-    <File name="biblioteki/tm_stm32f4_delay.h" path="biblioteki/tm_stm32f4_delay.h" type="1"/>
     <File name="usb_lib/core/usbd_core.h" path="usb_lib/core/usbd_core.h" type="1"/>
     <File name="usb_lib/core/usbd_core.c" path="usb_lib/core/usbd_core.c" type="1"/>
-    <File name="cmsis_boot/startup/startup_stm32f4xx.c" path="cmsis_boot/startup/startup_stm32f4xx.c" type="1"/>
     <File name="usb_lib/core" path="" type="2"/>
-    <File name="usb_conf/usb_conf.h" path="usb_conf/usb_conf.h" type="1"/>
-    <File name="usb_conf" path="" type="2"/>
+    <File name="cmsis_boot/startup/startup_stm32f4xx.c" path="cmsis_boot/startup/startup_stm32f4xx.c" type="1"/>
     <File name="cmsis_lib/source/stm32f4xx_rcc.c" path="cmsis_lib/source/stm32f4xx_rcc.c" type="1"/>
+    <File name="usb_conf" path="" type="2"/>
+    <File name="usb_conf/usb_conf.h" path="usb_conf/usb_conf.h" type="1"/>
     <File name="biblioteki" path="" type="2"/>
     <File name="cmsis/core_cmInstr.h" path="cmsis/core_cmInstr.h" type="1"/>
     <File name="usb_lib/otg/usb_core.c" path="usb_lib/otg/usb_core.c" type="1"/>
-    <File name="usb_lib/otg/usb_dcd.h" path="usb_lib/otg/usb_dcd.h" type="1"/>
     <File name="usb_lib/core/usbd_ioreq.c" path="usb_lib/core/usbd_ioreq.c" type="1"/>
-    <File name="biblioteki/tm_stm32f4_disco.h" path="biblioteki/tm_stm32f4_disco.h" type="1"/>
+    <File name="usb_lib/otg/usb_dcd.h" path="usb_lib/otg/usb_dcd.h" type="1"/>
     <File name="usb_lib/cdc/usbd_cdc_core.c" path="usb_lib/cdc/usbd_cdc_core.c" type="1"/>
     <File name="usb_conf/usbd_desc.h" path="usb_conf/usbd_desc.h" type="1"/>
     <File name="usb_conf/usb_bsp.h" path="usb_conf/usb_bsp.h" type="1"/>
@@ -141,27 +139,23 @@
     <File name="cmsis_boot/system_stm32f4xx.c" path="cmsis_boot/system_stm32f4xx.c" type="1"/>
     <File name="cmsis_lib/include/stm32f4xx_spi.h" path="cmsis_lib/include/stm32f4xx_spi.h" type="1"/>
     <File name="usb_lib/core/usbd_usr.h" path="usb_lib/core/usbd_usr.h" type="1"/>
-    <File name="akcelerometr.c" path="akcelerometr.c" type="1"/>
     <File name="cmsis" path="" type="2"/>
     <File name="cmsis_lib" path="" type="2"/>
     <File name="usb_lib/core/usbd_req.h" path="usb_lib/core/usbd_req.h" type="1"/>
-    <File name="biblioteki/tm_stm32f4_disco.c" path="biblioteki/tm_stm32f4_disco.c" type="1"/>
-    <File name="biblioteki/tm_stm32f4_delay.c" path="biblioteki/tm_stm32f4_delay.c" type="1"/>
     <File name="biblioteki/tm_stm32f4_usb_hid_device.c" path="biblioteki/tm_stm32f4_usb_hid_device.c" type="1"/>
     <File name="cmsis_lib/source/stm32f4xx_tim.c" path="cmsis_lib/source/stm32f4xx_tim.c" type="1"/>
     <File name="cmsis_lib/include/stm32f4xx_gpio.h" path="cmsis_lib/include/stm32f4xx_gpio.h" type="1"/>
     <File name="usb_lib/otg/usb_core.h" path="usb_lib/otg/usb_core.h" type="1"/>
     <File name="cmsis_lib/include/stm32f4xx_rtc.h" path="cmsis_lib/include/stm32f4xx_rtc.h" type="1"/>
-    <File name="usb_lib/otg/usb_dcd.c" path="usb_lib/otg/usb_dcd.c" type="1"/>
     <File name="usb_lib/core/usbd_ioreq.h" path="usb_lib/core/usbd_ioreq.h" type="1"/>
+    <File name="usb_lib/otg/usb_dcd.c" path="usb_lib/otg/usb_dcd.c" type="1"/>
     <File name="cmsis_lib/include/misc.h" path="cmsis_lib/include/misc.h" type="1"/>
-    <File name="biblioteki/tm_stm32f4_gpio.c" path="biblioteki/tm_stm32f4_gpio.c" type="1"/>
     <File name="akcelerometr.h" path="akcelerometr.h" type="1"/>
+    <File name="biblioteki/tm_stm32f4_gpio.c" path="biblioteki/tm_stm32f4_gpio.c" type="1"/>
     <File name="cmsis_lib/include" path="" type="2"/>
     <File name="usb_conf/usbd_desc.c" path="usb_conf/usbd_desc.c" type="1"/>
     <File name="usb_lib/cdc/usbd_cdc_core.h" path="usb_lib/cdc/usbd_cdc_core.h" type="1"/>
     <File name="biblioteki/tm_stm32f4_timer_properties.c" path="biblioteki/tm_stm32f4_timer_properties.c" type="1"/>
-    <File name="defines.h" path="defines.h" type="1"/>
     <File name="main.c" path="main.c" type="1"/>
     <File name="usb_lib/cdc/usbd_cdc_vcp.h" path="usb_lib/cdc/usbd_cdc_vcp.h" type="1"/>
   </Files>
