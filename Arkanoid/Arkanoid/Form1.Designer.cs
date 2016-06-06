@@ -1,6 +1,6 @@
 ﻿namespace Arkanoid
 {
-    partial class Form1
+    partial class ArkanoidForm
     {
         /// <summary>
         /// Required designer variable.
@@ -31,25 +31,25 @@
             this.components = new System.ComponentModel.Container();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.brick14 = new System.Windows.Forms.PictureBox();
-            this.brick08 = new System.Windows.Forms.PictureBox();
-            this.brick02 = new System.Windows.Forms.PictureBox();
+            this.brick8 = new System.Windows.Forms.PictureBox();
+            this.brick2 = new System.Windows.Forms.PictureBox();
             this.brick13 = new System.Windows.Forms.PictureBox();
             this.brick17 = new System.Windows.Forms.PictureBox();
             this.brick22 = new System.Windows.Forms.PictureBox();
             this.brick18 = new System.Windows.Forms.PictureBox();
-            this.brick06 = new System.Windows.Forms.PictureBox();
-            this.brick05 = new System.Windows.Forms.PictureBox();
-            this.brick01 = new System.Windows.Forms.PictureBox();
-            this.brick07 = new System.Windows.Forms.PictureBox();
+            this.brick6 = new System.Windows.Forms.PictureBox();
+            this.brick5 = new System.Windows.Forms.PictureBox();
+            this.brick1 = new System.Windows.Forms.PictureBox();
+            this.brick7 = new System.Windows.Forms.PictureBox();
             this.brick20 = new System.Windows.Forms.PictureBox();
             this.brick19 = new System.Windows.Forms.PictureBox();
             this.brick16 = new System.Windows.Forms.PictureBox();
             this.brick15 = new System.Windows.Forms.PictureBox();
-            this.brick03 = new System.Windows.Forms.PictureBox();
+            this.brick3 = new System.Windows.Forms.PictureBox();
             this.brick10 = new System.Windows.Forms.PictureBox();
-            this.brick04 = new System.Windows.Forms.PictureBox();
+            this.brick4 = new System.Windows.Forms.PictureBox();
             this.brick11 = new System.Windows.Forms.PictureBox();
-            this.brick09 = new System.Windows.Forms.PictureBox();
+            this.brick9 = new System.Windows.Forms.PictureBox();
             this.brick12 = new System.Windows.Forms.PictureBox();
             this.brick27 = new System.Windows.Forms.PictureBox();
             this.brick24 = new System.Windows.Forms.PictureBox();
@@ -63,25 +63,25 @@
             this.youWon = new System.Windows.Forms.PictureBox();
             this.youLose = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.brick14)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.brick08)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.brick02)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.brick8)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.brick2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.brick13)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.brick17)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.brick22)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.brick18)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.brick06)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.brick05)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.brick01)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.brick07)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.brick6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.brick5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.brick1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.brick7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.brick20)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.brick19)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.brick16)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.brick15)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.brick03)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.brick3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.brick10)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.brick04)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.brick4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.brick11)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.brick09)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.brick9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.brick12)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.brick27)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.brick24)).BeginInit();
@@ -99,6 +99,7 @@
             // timer1
             // 
             this.timer1.Enabled = true;
+            this.timer1.Interval = 20;
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // brick14
@@ -114,31 +115,31 @@
             this.brick14.TabIndex = 0;
             this.brick14.TabStop = false;
             // 
-            // brick08
+            // brick8
             // 
-            this.brick08.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.brick8.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.brick08.BackColor = System.Drawing.Color.Transparent;
-            this.brick08.Image = global::Arkanoid.Properties.Resources.brick;
-            this.brick08.Location = new System.Drawing.Point(296, 125);
-            this.brick08.Name = "brick08";
-            this.brick08.Size = new System.Drawing.Size(55, 27);
-            this.brick08.TabIndex = 1;
-            this.brick08.TabStop = false;
+            this.brick8.BackColor = System.Drawing.Color.Transparent;
+            this.brick8.Image = global::Arkanoid.Properties.Resources.brick;
+            this.brick8.Location = new System.Drawing.Point(296, 125);
+            this.brick8.Name = "brick8";
+            this.brick8.Size = new System.Drawing.Size(55, 27);
+            this.brick8.TabIndex = 1;
+            this.brick8.TabStop = false;
             // 
-            // brick02
+            // brick2
             // 
-            this.brick02.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.brick2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.brick02.BackColor = System.Drawing.Color.Transparent;
-            this.brick02.Image = global::Arkanoid.Properties.Resources.brick;
-            this.brick02.Location = new System.Drawing.Point(341, 59);
-            this.brick02.Name = "brick02";
-            this.brick02.Size = new System.Drawing.Size(55, 27);
-            this.brick02.TabIndex = 2;
-            this.brick02.TabStop = false;
+            this.brick2.BackColor = System.Drawing.Color.Transparent;
+            this.brick2.Image = global::Arkanoid.Properties.Resources.brick;
+            this.brick2.Location = new System.Drawing.Point(341, 59);
+            this.brick2.Name = "brick2";
+            this.brick2.Size = new System.Drawing.Size(55, 27);
+            this.brick2.TabIndex = 2;
+            this.brick2.TabStop = false;
             // 
             // brick13
             // 
@@ -192,57 +193,57 @@
             this.brick18.TabIndex = 6;
             this.brick18.TabStop = false;
             // 
-            // brick06
+            // brick6
             // 
-            this.brick06.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.brick6.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.brick06.BackColor = System.Drawing.Color.Transparent;
-            this.brick06.Image = global::Arkanoid.Properties.Resources.brick;
-            this.brick06.Location = new System.Drawing.Point(174, 125);
-            this.brick06.Name = "brick06";
-            this.brick06.Size = new System.Drawing.Size(55, 27);
-            this.brick06.TabIndex = 7;
-            this.brick06.TabStop = false;
+            this.brick6.BackColor = System.Drawing.Color.Transparent;
+            this.brick6.Image = global::Arkanoid.Properties.Resources.brick;
+            this.brick6.Location = new System.Drawing.Point(174, 125);
+            this.brick6.Name = "brick6";
+            this.brick6.Size = new System.Drawing.Size(55, 27);
+            this.brick6.TabIndex = 7;
+            this.brick6.TabStop = false;
             // 
-            // brick05
+            // brick5
             // 
-            this.brick05.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.brick5.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.brick05.BackColor = System.Drawing.Color.Transparent;
-            this.brick05.Image = global::Arkanoid.Properties.Resources.brick;
-            this.brick05.Location = new System.Drawing.Point(451, 92);
-            this.brick05.Name = "brick05";
-            this.brick05.Size = new System.Drawing.Size(55, 27);
-            this.brick05.TabIndex = 8;
-            this.brick05.TabStop = false;
+            this.brick5.BackColor = System.Drawing.Color.Transparent;
+            this.brick5.Image = global::Arkanoid.Properties.Resources.brick;
+            this.brick5.Location = new System.Drawing.Point(451, 92);
+            this.brick5.Name = "brick5";
+            this.brick5.Size = new System.Drawing.Size(55, 27);
+            this.brick5.TabIndex = 8;
+            this.brick5.TabStop = false;
             // 
-            // brick01
+            // brick1
             // 
-            this.brick01.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.brick1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.brick01.BackColor = System.Drawing.Color.Transparent;
-            this.brick01.Image = global::Arkanoid.Properties.Resources.brick;
-            this.brick01.Location = new System.Drawing.Point(381, 26);
-            this.brick01.Name = "brick01";
-            this.brick01.Size = new System.Drawing.Size(55, 27);
-            this.brick01.TabIndex = 9;
-            this.brick01.TabStop = false;
+            this.brick1.BackColor = System.Drawing.Color.Transparent;
+            this.brick1.Image = global::Arkanoid.Properties.Resources.brick;
+            this.brick1.Location = new System.Drawing.Point(381, 26);
+            this.brick1.Name = "brick1";
+            this.brick1.Size = new System.Drawing.Size(55, 27);
+            this.brick1.TabIndex = 9;
+            this.brick1.TabStop = false;
             // 
-            // brick07
+            // brick7
             // 
-            this.brick07.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.brick7.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.brick07.BackColor = System.Drawing.Color.Transparent;
-            this.brick07.Image = global::Arkanoid.Properties.Resources.brick;
-            this.brick07.Location = new System.Drawing.Point(235, 125);
-            this.brick07.Name = "brick07";
-            this.brick07.Size = new System.Drawing.Size(55, 27);
-            this.brick07.TabIndex = 10;
-            this.brick07.TabStop = false;
+            this.brick7.BackColor = System.Drawing.Color.Transparent;
+            this.brick7.Image = global::Arkanoid.Properties.Resources.brick;
+            this.brick7.Location = new System.Drawing.Point(235, 125);
+            this.brick7.Name = "brick7";
+            this.brick7.Size = new System.Drawing.Size(55, 27);
+            this.brick7.TabIndex = 10;
+            this.brick7.TabStop = false;
             // 
             // brick20
             // 
@@ -296,18 +297,18 @@
             this.brick15.TabIndex = 14;
             this.brick15.TabStop = false;
             // 
-            // brick03
+            // brick3
             // 
-            this.brick03.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.brick3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.brick03.BackColor = System.Drawing.Color.Transparent;
-            this.brick03.Image = global::Arkanoid.Properties.Resources.brick;
-            this.brick03.Location = new System.Drawing.Point(422, 59);
-            this.brick03.Name = "brick03";
-            this.brick03.Size = new System.Drawing.Size(55, 27);
-            this.brick03.TabIndex = 15;
-            this.brick03.TabStop = false;
+            this.brick3.BackColor = System.Drawing.Color.Transparent;
+            this.brick3.Image = global::Arkanoid.Properties.Resources.brick;
+            this.brick3.Location = new System.Drawing.Point(422, 59);
+            this.brick3.Name = "brick3";
+            this.brick3.Size = new System.Drawing.Size(55, 27);
+            this.brick3.TabIndex = 15;
+            this.brick3.TabStop = false;
             // 
             // brick10
             // 
@@ -322,18 +323,18 @@
             this.brick10.TabIndex = 16;
             this.brick10.TabStop = false;
             // 
-            // brick04
+            // brick4
             // 
-            this.brick04.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.brick4.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.brick04.BackColor = System.Drawing.Color.Transparent;
-            this.brick04.Image = global::Arkanoid.Properties.Resources.brick;
-            this.brick04.Location = new System.Drawing.Point(312, 92);
-            this.brick04.Name = "brick04";
-            this.brick04.Size = new System.Drawing.Size(55, 27);
-            this.brick04.TabIndex = 17;
-            this.brick04.TabStop = false;
+            this.brick4.BackColor = System.Drawing.Color.Transparent;
+            this.brick4.Image = global::Arkanoid.Properties.Resources.brick;
+            this.brick4.Location = new System.Drawing.Point(312, 92);
+            this.brick4.Name = "brick4";
+            this.brick4.Size = new System.Drawing.Size(55, 27);
+            this.brick4.TabIndex = 17;
+            this.brick4.TabStop = false;
             // 
             // brick11
             // 
@@ -348,18 +349,18 @@
             this.brick11.TabIndex = 18;
             this.brick11.TabStop = false;
             // 
-            // brick09
+            // brick9
             // 
-            this.brick09.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.brick9.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.brick09.BackColor = System.Drawing.Color.Transparent;
-            this.brick09.Image = global::Arkanoid.Properties.Resources.brick;
-            this.brick09.Location = new System.Drawing.Point(471, 125);
-            this.brick09.Name = "brick09";
-            this.brick09.Size = new System.Drawing.Size(55, 27);
-            this.brick09.TabIndex = 19;
-            this.brick09.TabStop = false;
+            this.brick9.BackColor = System.Drawing.Color.Transparent;
+            this.brick9.Image = global::Arkanoid.Properties.Resources.brick;
+            this.brick9.Location = new System.Drawing.Point(471, 125);
+            this.brick9.Name = "brick9";
+            this.brick9.Size = new System.Drawing.Size(55, 27);
+            this.brick9.TabIndex = 19;
+            this.brick9.TabStop = false;
             // 
             // brick12
             // 
@@ -496,7 +497,7 @@
             this.youWon.BackColor = System.Drawing.Color.Transparent;
             this.youWon.Cursor = System.Windows.Forms.Cursors.Default;
             this.youWon.Image = global::Arkanoid.Properties.Resources.youwon;
-            this.youWon.Location = new System.Drawing.Point(190, 92);
+            this.youWon.Location = new System.Drawing.Point(205, 92);
             this.youWon.Name = "youWon";
             this.youWon.Size = new System.Drawing.Size(427, 225);
             this.youWon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -508,7 +509,7 @@
             // 
             this.youLose.BackColor = System.Drawing.Color.Transparent;
             this.youLose.Image = global::Arkanoid.Properties.Resources.youlose;
-            this.youLose.Location = new System.Drawing.Point(139, 92);
+            this.youLose.Location = new System.Drawing.Point(150, 100);
             this.youLose.Name = "youLose";
             this.youLose.Size = new System.Drawing.Size(520, 217);
             this.youLose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -516,7 +517,7 @@
             this.youLose.TabStop = false;
             this.youLose.Visible = false;
             // 
-            // Form1
+            // ArkanoidForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -536,52 +537,52 @@
             this.Controls.Add(this.brick24);
             this.Controls.Add(this.brick27);
             this.Controls.Add(this.brick12);
-            this.Controls.Add(this.brick09);
+            this.Controls.Add(this.brick9);
             this.Controls.Add(this.brick11);
-            this.Controls.Add(this.brick04);
+            this.Controls.Add(this.brick4);
             this.Controls.Add(this.brick10);
-            this.Controls.Add(this.brick03);
+            this.Controls.Add(this.brick3);
             this.Controls.Add(this.brick15);
             this.Controls.Add(this.brick16);
             this.Controls.Add(this.brick19);
             this.Controls.Add(this.brick20);
-            this.Controls.Add(this.brick07);
-            this.Controls.Add(this.brick01);
-            this.Controls.Add(this.brick05);
-            this.Controls.Add(this.brick06);
+            this.Controls.Add(this.brick7);
+            this.Controls.Add(this.brick1);
+            this.Controls.Add(this.brick5);
+            this.Controls.Add(this.brick6);
             this.Controls.Add(this.brick18);
             this.Controls.Add(this.brick22);
             this.Controls.Add(this.brick17);
             this.Controls.Add(this.brick13);
-            this.Controls.Add(this.brick02);
-            this.Controls.Add(this.brick08);
+            this.Controls.Add(this.brick2);
+            this.Controls.Add(this.brick8);
             this.Controls.Add(this.brick14);
             this.DoubleBuffered = true;
-            this.Name = "Form1";
+            this.Name = "ArkanoidForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Arkanoid";
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.Form1_Paint);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseMove);
             ((System.ComponentModel.ISupportInitialize)(this.brick14)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.brick08)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.brick02)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.brick8)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.brick2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.brick13)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.brick17)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.brick22)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.brick18)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.brick06)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.brick05)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.brick01)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.brick07)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.brick6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.brick5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.brick1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.brick7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.brick20)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.brick19)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.brick16)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.brick15)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.brick03)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.brick3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.brick10)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.brick04)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.brick4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.brick11)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.brick09)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.brick9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.brick12)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.brick27)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.brick24)).EndInit();
@@ -602,25 +603,25 @@
 
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.PictureBox brick14;
-        private System.Windows.Forms.PictureBox brick08;
-        private System.Windows.Forms.PictureBox brick02;
+        private System.Windows.Forms.PictureBox brick8;
+        private System.Windows.Forms.PictureBox brick2;
         private System.Windows.Forms.PictureBox brick13;
         private System.Windows.Forms.PictureBox brick17;
         private System.Windows.Forms.PictureBox brick22;
         private System.Windows.Forms.PictureBox brick18;
-        private System.Windows.Forms.PictureBox brick06;
-        private System.Windows.Forms.PictureBox brick05;
-        private System.Windows.Forms.PictureBox brick01;
-        private System.Windows.Forms.PictureBox brick07;
+        private System.Windows.Forms.PictureBox brick6;
+        private System.Windows.Forms.PictureBox brick5;
+        private System.Windows.Forms.PictureBox brick1;
+        private System.Windows.Forms.PictureBox brick7;
         private System.Windows.Forms.PictureBox brick20;
         private System.Windows.Forms.PictureBox brick19;
         private System.Windows.Forms.PictureBox brick16;
         private System.Windows.Forms.PictureBox brick15;
-        private System.Windows.Forms.PictureBox brick03;
+        private System.Windows.Forms.PictureBox brick3;
         private System.Windows.Forms.PictureBox brick10;
-        private System.Windows.Forms.PictureBox brick04;
+        private System.Windows.Forms.PictureBox brick4;
         private System.Windows.Forms.PictureBox brick11;
-        private System.Windows.Forms.PictureBox brick09;
+        private System.Windows.Forms.PictureBox brick9;
         private System.Windows.Forms.PictureBox brick12;
         private System.Windows.Forms.PictureBox brick27;
         private System.Windows.Forms.PictureBox brick24;
@@ -633,7 +634,6 @@
         private System.Windows.Forms.PictureBox brick26;
         private System.Windows.Forms.PictureBox youWon;
         private System.Windows.Forms.PictureBox youLose;
-
     }
 }
 

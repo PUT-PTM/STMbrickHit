@@ -29,10 +29,6 @@
 <input factoryID="org.coocox.component.ui.editors.repository.RepositoryElementFactory">&#x0A;<subPage horizontalPosition="0" selectedItemId="524" subPageIndex="2" verticalPosition="548"/>
 </input>
 </editor>
-<editor activePart="true" focus="true" id="org.eclipse.cdt.ui.editor.CEditor" name="main.c" partName="main.c" path="C:/CooCox/CoIDE/workspace/VCP/main.c" title="main.c" tooltip="C:/CooCox/CoIDE/workspace/VCP/main.c" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/VCP/main.c"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="3376" selectionTopPixel="2516"/>
-</editor>
 <editor id="org.eclipse.cdt.ui.editor.CEditor" name="tm_stm32f4_lis302dl_lis3dsh.h" partName="tm_stm32f4_lis302dl_lis3dsh.h" path="C:/CooCox/CoIDE/workspace/VCP/library/tm_stm32f4_lis302dl_lis3dsh.h" title="tm_stm32f4_lis302dl_lis3dsh.h" tooltip="C:/CooCox/CoIDE/workspace/VCP/library/tm_stm32f4_lis302dl_lis3dsh.h" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/VCP/library/tm_stm32f4_lis302dl_lis3dsh.h"/>
 <editorState selectionHorizontalPixel="0" selectionLength="29" selectionOffset="2452" selectionTopPixel="1088"/>
@@ -52,21 +48,7 @@
 </editors>
 <views>
 <view id="org.coocox.builder.ui.views.ProjectView" partName="Project">
-<viewState CommonNavigator.LINKING_ENABLED="0" horizontalPosition="0" org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets="0" verticalPosition="20">
-<expanded>
-<element path="/VCP"/>
-<element path="/VCP/cmsis"/>
-<element path="/VCP/cmsis_boot"/>
-<element path="/VCP/cmsis_boot/startup"/>
-<element path="/VCP/cmsis_lib"/>
-<element path="/VCP/cmsis_lib/include"/>
-<element path="/VCP/library"/>
-<element path="/VCP/usb_lib"/>
-</expanded>
-<selection>
-<element path="/VCP/library/tm_stm32f4_lis302dl_lis3dsh.h"/>
-</selection>
-</viewState>
+<viewState CommonNavigator.LINKING_ENABLED="0" horizontalPosition="0" org.eclipse.ui.navigator.resources.workingSets.showTopLevelWorkingSets="0" verticalPosition="0"/>
 </view>
 <view id="org.coocox.component.ui.ComponentView" partName="Components">
 <viewState/>

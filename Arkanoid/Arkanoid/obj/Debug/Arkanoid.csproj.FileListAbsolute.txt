@@ -7,3 +7,21 @@ c:\users\user\documents\visual studio 2013\Projects\Arkanoid\Arkanoid\obj\Debug\
 c:\users\user\documents\visual studio 2013\Projects\Arkanoid\Arkanoid\obj\Debug\Arkanoid.csproj.GenerateResource.Cache
 c:\users\user\documents\visual studio 2013\Projects\Arkanoid\Arkanoid\obj\Debug\Arkanoid.exe
 c:\users\user\documents\visual studio 2013\Projects\Arkanoid\Arkanoid\obj\Debug\Arkanoid.pdb
+c:\Users\Kuba\Desktop\Arkanoid\Arkanoid\bin\Debug\Arkanoid.exe.config
+c:\Users\Kuba\Desktop\Arkanoid\Arkanoid\obj\Debug\Arkanoid.exe
+c:\Users\Kuba\Desktop\Arkanoid\Arkanoid\obj\Debug\Arkanoid.pdb
+c:\Users\Kuba\Desktop\Arkanoid\Arkanoid\obj\Debug\Arkanoid.csprojResolveAssemblyReference.cache
+c:\Users\Kuba\Desktop\Arkanoid\Arkanoid\obj\Debug\Arkanoid.ArkanoidForm.resources
+c:\Users\Kuba\Desktop\Arkanoid\Arkanoid\obj\Debug\Arkanoid.Properties.Resources.resources
+c:\Users\Kuba\Desktop\Arkanoid\Arkanoid\obj\Debug\Arkanoid.csproj.GenerateResource.Cache
+c:\Users\Kuba\Desktop\Arkanoid\Arkanoid\bin\Debug\Arkanoid.exe
+c:\Users\Kuba\Desktop\Arkanoid\Arkanoid\bin\Debug\Arkanoid.pdb
+C:\Users\User\Desktop\Arkanoid\Arkanoid\bin\Debug\Arkanoid.exe.config
+C:\Users\User\Desktop\Arkanoid\Arkanoid\obj\Debug\Arkanoid.exe
+C:\Users\User\Desktop\Arkanoid\Arkanoid\obj\Debug\Arkanoid.pdb
+C:\Users\User\Desktop\Arkanoid\Arkanoid\bin\Debug\Arkanoid.exe
+C:\Users\User\Desktop\Arkanoid\Arkanoid\bin\Debug\Arkanoid.pdb
+C:\Users\User\Desktop\Arkanoid\Arkanoid\obj\Debug\Arkanoid.csprojResolveAssemblyReference.cache
+C:\Users\User\Desktop\Arkanoid\Arkanoid\obj\Debug\Arkanoid.ArkanoidForm.resources
+C:\Users\User\Desktop\Arkanoid\Arkanoid\obj\Debug\Arkanoid.Properties.Resources.resources
+C:\Users\User\Desktop\Arkanoid\Arkanoid\obj\Debug\Arkanoid.csproj.GenerateResource.Cache
