@@ -21,7 +21,7 @@ namespace Arkanoid
 
         public Paddle()
         {
-            x = 0;
+            x = 350;
             y = 530;
             width = 100;
             height = 15;
@@ -39,6 +39,29 @@ namespace Arkanoid
         public void movePaddle(int mouseX)
         {
             paddleRec.X = mouseX - (paddleRec.Width / 2);
+        }
+
+        public void movePaddlebyKeyboard(char Key, ArkanoidForm AF)
+        {
+
+            if ((Key == 'a') || (Key == 'A'))
+            {
+                paddleRec.X -= (paddleRec.Width / 2);
+                if (paddleRec.X < 0)
+                {
+                    paddleRec.X = 0;
+                }
+            }
+
+            if ((Key == 'd') || (Key == 'D'))
+            {
+                paddleRec.X += (paddleRec.Width / 2);
+                if (paddleRec.X > AF.Width)
+                {
+                    paddleRec.X = AF.Width;
+                }
+            }
+
         }
     }
 }

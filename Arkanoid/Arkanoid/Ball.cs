@@ -41,8 +41,8 @@ namespace Arkanoid
             width = 20;
             height = 20;
 
-            xspeed = randSpeed.Next(7, 10);
-            yspeed = randSpeed.Next(7, 10);
+            xspeed = randSpeed.Next(5, 7);
+            yspeed = randSpeed.Next(5, 7);
 
             ballImage = Arkanoid.Properties.Resources.ball2;
 

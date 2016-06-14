@@ -29,6 +29,10 @@ namespace Arkanoid
                 RecBricks.Add("brick" + i, new Rectangle(brick.Location.X, brick.Location.Y, brick.Width, brick.Height));
             }
 
+            serialPort1.PortName = "COM5";
+            serialPort1.BaudRate = 9600;
+            serialPort1.Open();
+
         }
 
         private void Form1_Paint(object sender, PaintEventArgs e)
@@ -61,6 +65,9 @@ namespace Arkanoid
                     ball.yspeed *= -1;
                     this.Controls.Remove(this.Controls.Find(kvp.Key, true).FirstOrDefault());
                     RecBricks.Remove(kvp.Key);
+                    char[] x = new char[1];
+                    x[0] = 'X';
+                    serialPort1.Write(x, 0, 1);
                     break;               
                 }
 
@@ -68,5 +75,16 @@ namespace Arkanoid
 
         }
 
+        private void ArkanoidForm_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            paddle.movePaddlebyKeyboard(e.KeyChar, this);
+        }
+
+        private void serialPort1_DataReceived(object sender, System.IO.Ports.SerialDataReceivedEventArgs e)
+        {
+            char data = Convert.ToChar(serialPort1.ReadChar());
+            paddle.movePaddlebyKeyboard(data, this);
+
+        }
     }
 }

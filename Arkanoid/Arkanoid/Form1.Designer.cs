@@ -62,6 +62,7 @@
             this.brick26 = new System.Windows.Forms.PictureBox();
             this.youWon = new System.Windows.Forms.PictureBox();
             this.youLose = new System.Windows.Forms.PictureBox();
+            this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.brick14)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.brick8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.brick2)).BeginInit();
@@ -497,7 +498,7 @@
             this.youWon.BackColor = System.Drawing.Color.Transparent;
             this.youWon.Cursor = System.Windows.Forms.Cursors.Default;
             this.youWon.Image = global::Arkanoid.Properties.Resources.youwon;
-            this.youWon.Location = new System.Drawing.Point(205, 92);
+            this.youWon.Location = new System.Drawing.Point(190, 92);
             this.youWon.Name = "youWon";
             this.youWon.Size = new System.Drawing.Size(427, 225);
             this.youWon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -509,13 +510,17 @@
             // 
             this.youLose.BackColor = System.Drawing.Color.Transparent;
             this.youLose.Image = global::Arkanoid.Properties.Resources.youlose;
-            this.youLose.Location = new System.Drawing.Point(150, 100);
+            this.youLose.Location = new System.Drawing.Point(140, 100);
             this.youLose.Name = "youLose";
             this.youLose.Size = new System.Drawing.Size(520, 217);
             this.youLose.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.youLose.TabIndex = 32;
             this.youLose.TabStop = false;
             this.youLose.Visible = false;
+            // 
+            // serialPort1
+            // 
+            this.serialPort1.DataReceived += new System.IO.Ports.SerialDataReceivedEventHandler(this.serialPort1_DataReceived);
             // 
             // ArkanoidForm
             // 
@@ -562,6 +567,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Arkanoid";
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.Form1_Paint);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ArkanoidForm_KeyPress);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseMove);
             ((System.ComponentModel.ISupportInitialize)(this.brick14)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.brick8)).EndInit();
@@ -634,6 +640,7 @@
         private System.Windows.Forms.PictureBox brick26;
         private System.Windows.Forms.PictureBox youWon;
         private System.Windows.Forms.PictureBox youLose;
+        private System.IO.Ports.SerialPort serialPort1;
     }
 }
 

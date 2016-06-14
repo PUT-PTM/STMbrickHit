@@ -1,4 +1,5 @@
-#define HSE_VALUE ((uint32_t)25000000) /* STM32 discovery uses a 8Mhz external crystal */
+
+#define HSE_VALUE ((uint32_t)8000000) /* STM32 discovery uses a 8Mhz external crystal */
 
 #include "stm32f4xx_conf.h"
 #include "stm32f4xx.h"
@@ -10,10 +11,12 @@
 #include "usbd_desc.h"
 #include "usbd_cdc_vcp.h"
 #include "usb_dcd_int.h"
-#include "akcelerometr.h"
 #include "defines.h"
+#include "tm_stm32f4_disco.h"
+#include "tm_stm32f4_delay.h"
+#include "tm_stm32f4_lis302dl_lis3dsh.h"
 
-volatile uint32_t ticker;//, downTicker;
+volatile uint32_t ticker, downTicker;
 
 /*
  * The USB data must be 4 byte aligned if DMA is enabled. This macro handles
@@ -53,38 +56,52 @@ void OTG_FS_WKUP_IRQHandler(void);
 
 int main(void)
 {
-	/* Initialize system */
+	TM_LIS302DL_LIS3DSH_t Axes_Data;
+	/* Set up the system clocks */
 	SystemInit();
-
-	// Initialize accelerometer
-	AKC_Init();
 
 	/* Initialize USB, IO, SysTick, and all those other things you do in the morning */
 	init();
 
-	uint8_t L='L';
-	uint8_t P='P';
+	/* Init delay */
+	TM_DELAY_Init();
+
+	/* Initialize LEDs */
+	TM_DISCO_LedInit();
+
+	/* Detect proper device */
+	if (TM_LIS302DL_LIS3DSH_Detect() == TM_LIS302DL_LIS3DSH_Device_LIS302DL)
+	{
+		/* Turn on GREEN and RED */
+		//TM_DISCO_LedOn(LED_GREEN | LED_RED);
+		/* Initialize LIS302DL */
+		TM_LIS302DL_LIS3DSH_Init(TM_LIS302DL_Sensitivity_2_3G, TM_LIS302DL_Filter_2Hz);
+	}
+	else if (TM_LIS302DL_LIS3DSH_Detect() == TM_LIS302DL_LIS3DSH_Device_LIS3DSH)
+	{
+		/* Turn on BLUE and ORANGE */
+		//TM_DISCO_LedOn(LED_BLUE | LED_ORANGE);
+		/* Initialize LIS3DSH */
+		TM_LIS302DL_LIS3DSH_Init(TM_LIS3DSH_Sensitivity_2G, TM_LIS3DSH_Filter_800Hz);
+	}
+	else
+	{
+		/* Device is not recognized */
+
+		/* Turn on ALL leds */
+		//TM_DISCO_LedOn(LED_GREEN | LED_RED | LED_BLUE | LED_ORANGE);
+
+		/* Infinite loop */
+		while (1);
+	}
+
+	/* Delay for 2 seconds */
+	Delayms(2000);
 
 	while (1)
 	{
-		AktualizujAKC();
-
-		if(!(acc_x < 5 || acc_x > 250))
-		{
-			if(acc_x >= 200)
-			{
-				VCP_put_char(L);
-				GPIOD->BSRRH = GPIO_Pin_12;
-			}
-			else if(acc_x <= 50)
-			{
-				VCP_put_char(P);
-				GPIOD->BSRRH = GPIO_Pin_14;
-			}
-		}
-
 		/* Blink the orange LED at 1Hz */
-		/*if (500 == ticker)
+		if (500 == ticker)
 		{
 			GPIOD->BSRRH = GPIO_Pin_13;
 		}
@@ -92,26 +109,85 @@ int main(void)
 		{
 			ticker = 0;
 			GPIOD->BSRRL = GPIO_Pin_13;
-		}*/
+		}
 
+		/* Read axes data from initialized accelerometer */
+		TM_LIS302DL_LIS3DSH_ReadAxes(&Axes_Data);
+
+		/* Turn LEDS on or off */
+		/* Check X axes */
+		if (Axes_Data.X > 200)
+		{
+			VCP_put_char('D');
+			GPIOD->BSRRL = GPIO_Pin_14;
+		}
+		else
+		{
+			GPIOD->BSRRH = GPIO_Pin_14;
+		}
+		if (Axes_Data.X < -200)
+		{
+			VCP_put_char('A');
+			GPIOD->BSRRL = GPIO_Pin_12;
+
+		}
+		else
+		{
+			GPIOD->BSRRH = GPIO_Pin_12;
+			//TM_DISCO_LedOff(LED_GREEN);
+		}
+
+		/* Check Y axes */
+//		if (Axes_Data.Y > 200)
+//		{
+//			//VCP_put_char('W');
+//			GPIOD->BSRRL = GPIO_Pin_13;
+//		}
+//		else
+//		{
+//			GPIOD->BSRRH = GPIO_Pin_13;
+//		}
+//		if (Axes_Data.Y < -200)
+//		{
+//			//VCP_put_char('S');
+//			GPIOD->BSRRL = GPIO_Pin_15;
+//		}
+//		else
+//		{
+//			GPIOD->BSRRH = GPIO_Pin_15;
+//		}
+
+		if (VCP_get_char('X'))
+		{
+			GPIOD->BSRRL = GPIO_Pin_13;
+			GPIOD->BSRRL = GPIO_Pin_15;
+			TM_Time2 = 10;
+		}
+		if (0 == TM_Time2)
+		{
+			//TM_DISCO_LedOn(LED_GREEN);
+			GPIOD->BSRRH = GPIO_Pin_13;
+			GPIOD->BSRRH = GPIO_Pin_15;
+		}
 
 		/* If there's data on the virtual serial port:
 		 *  - Echo it back
 		 *  - Turn the green LED on for 10ms
 		 */
-		/*uint8_t theByte;
-		if (VCP_get_char(&theByte))
-		{
-			VCP_put_char(theByte);
-
-
-			GPIOD->BSRRL = GPIO_Pin_12;
-			downTicker = 10;
-		}
-		if (0 == downTicker)
-		{
-			GPIOD->BSRRH = GPIO_Pin_12;
-		}*/
+//		uint8_t theByte;
+//		if (VCP_get_char(&theByte))
+//		{
+//			VCP_put_char(theByte);
+//
+//			TM_DISCO_LedOn(LED_GREEN);
+//			//GPIOD->BSRRL = GPIO_Pin_12;
+//			downTicker = 10;
+//		}
+//		if (0 == downTicker)
+//		{
+//			//TM_DISCO_LedOn(LED_GREEN);
+//			//GPIOD->BSRRH = GPIO_Pin_12;
+//		}
 	}
 
 	return 0;
@@ -179,14 +255,14 @@ void ColorfulRingOfDeath(void)
  * Interrupt Handlers
  */
 
-/*void SysTick_Handler(void)
-{
-	ticker++;
-	if (downTicker > 0)
-	{
-		downTicker--;
-	}
-}*/
+//void SysTick_Handler(void)
+//{
+//	ticker++;
+//	if (downTicker > 0)
+//	{
+//		downTicker--;
+//	}
+//}
 
 void NMI_Handler(void)       {}
 void HardFault_Handler(void) { ColorfulRingOfDeath(); }
