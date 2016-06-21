@@ -42,11 +42,11 @@ namespace Arkanoid
             ball.drawBall(paper);
         }
 
-        private void Form1_MouseMove(object sender, MouseEventArgs e)
-        {
-            paddle.movePaddle(e.X);
-            this.Invalidate();
-        }
+        //private void Form1_MouseMove(object sender, MouseEventArgs e)
+        //{
+        //    paddle.movePaddle(e.X);
+        //    this.Invalidate();
+        //}
 
         private void timer1_Tick(object sender, EventArgs e)
         {
@@ -77,13 +77,13 @@ namespace Arkanoid
 
         private void ArkanoidForm_KeyPress(object sender, KeyPressEventArgs e)
         {
-            paddle.movePaddlebyKeyboard(e.KeyChar, this);
+            paddle.movePaddlebyKeyboard(e.KeyChar);
         }
 
         private void serialPort1_DataReceived(object sender, System.IO.Ports.SerialDataReceivedEventArgs e)
         {
             char data = Convert.ToChar(serialPort1.ReadChar());
-            paddle.movePaddlebyKeyboard(data, this);
+            paddle.movePaddlebyKeyboard(data);
 
         }
     }

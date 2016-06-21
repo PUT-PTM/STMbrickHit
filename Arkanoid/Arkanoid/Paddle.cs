@@ -36,17 +36,17 @@ namespace Arkanoid
             paper.DrawImage(paddleImage, paddleRec);
         }
 
-        public void movePaddle(int mouseX)
-        {
-            paddleRec.X = mouseX - (paddleRec.Width / 2);
-        }
+        //public void movePaddle(int mouseX)
+        //{
+        //    paddleRec.X = mouseX - (paddleRec.Width / 2);
+        //}
 
-        public void movePaddlebyKeyboard(char Key, ArkanoidForm AF)
+        public void movePaddlebyKeyboard(char Key)
         {
 
             if ((Key == 'a') || (Key == 'A'))
             {
-                paddleRec.X -= (paddleRec.Width / 2);
+                paddleRec.X -= (paddleRec.Width / 10);
                 if (paddleRec.X < 0)
                 {
                     paddleRec.X = 0;
@@ -55,10 +55,10 @@ namespace Arkanoid
 
             if ((Key == 'd') || (Key == 'D'))
             {
-                paddleRec.X += (paddleRec.Width / 2);
-                if (paddleRec.X > AF.Width)
+                paddleRec.X += (paddleRec.Width / 10);
+                if (paddleRec.X > 700)
                 {
-                    paddleRec.X = AF.Width;
+                    paddleRec.X = 700;
                 }
             }
 

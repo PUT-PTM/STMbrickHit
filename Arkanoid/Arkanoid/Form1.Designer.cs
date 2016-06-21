@@ -568,7 +568,7 @@
             this.Text = "Arkanoid";
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.Form1_Paint);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ArkanoidForm_KeyPress);
-            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseMove);
+            //this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseMove);
             ((System.ComponentModel.ISupportInitialize)(this.brick14)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.brick8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.brick2)).EndInit();
