@@ -6,17 +6,15 @@
 #include "stm32f4xx_gpio.h"
 #include "stm32f4xx_rcc.h"
 #include "stm32f4xx_exti.h"
+#include "stm32f4xx_tim.h"
 #include "usbd_cdc_core.h"
 #include "usbd_usr.h"
 #include "usbd_desc.h"
 #include "usbd_cdc_vcp.h"
 #include "usb_dcd_int.h"
 #include "defines.h"
-#include "tm_stm32f4_disco.h"
 #include "tm_stm32f4_delay.h"
 #include "tm_stm32f4_lis302dl_lis3dsh.h"
-
-volatile uint32_t ticker, downTicker;
 
 /*
  * The USB data must be 4 byte aligned if DMA is enabled. This macro handles
@@ -65,31 +63,25 @@ int main(void)
 
 	/* Init delay */
 	TM_DELAY_Init();
+	timer();
 
-	/* Initialize LEDs */
-	TM_DISCO_LedInit();
+	/* Init timer */
+	timer5();
 
-	/* Detect proper device */
+		/* Detect proper device */
 	if (TM_LIS302DL_LIS3DSH_Detect() == TM_LIS302DL_LIS3DSH_Device_LIS302DL)
 	{
-		/* Turn on GREEN and RED */
-		//TM_DISCO_LedOn(LED_GREEN | LED_RED);
 		/* Initialize LIS302DL */
 		TM_LIS302DL_LIS3DSH_Init(TM_LIS302DL_Sensitivity_2_3G, TM_LIS302DL_Filter_2Hz);
 	}
 	else if (TM_LIS302DL_LIS3DSH_Detect() == TM_LIS302DL_LIS3DSH_Device_LIS3DSH)
 	{
-		/* Turn on BLUE and ORANGE */
-		//TM_DISCO_LedOn(LED_BLUE | LED_ORANGE);
 		/* Initialize LIS3DSH */
 		TM_LIS302DL_LIS3DSH_Init(TM_LIS3DSH_Sensitivity_2G, TM_LIS3DSH_Filter_800Hz);
 	}
 	else
 	{
 		/* Device is not recognized */
-
-		/* Turn on ALL leds */
-		//TM_DISCO_LedOn(LED_GREEN | LED_RED | LED_BLUE | LED_ORANGE);
 
 		/* Infinite loop */
 		while (1);
@@ -100,96 +92,107 @@ int main(void)
 
 	while (1)
 	{
-		/* Blink the orange LED at 1Hz */
-		if (500 == ticker)
-		{
-			GPIOD->BSRRH = GPIO_Pin_13;
-		}
-		else if (1000 == ticker)
-		{
-			ticker = 0;
-			GPIOD->BSRRL = GPIO_Pin_13;
-		}
-
 		/* Read axes data from initialized accelerometer */
 		TM_LIS302DL_LIS3DSH_ReadAxes(&Axes_Data);
 
-		/* Turn LEDS on or off */
-		/* Check X axes */
-		if (Axes_Data.X > 200)
+		TIM_Cmd(TIM2, ENABLE);
+		if(TIM_GetFlagStatus(TIM2, TIM_FLAG_Update))
 		{
-			VCP_put_char('D');
-			GPIOD->BSRRL = GPIO_Pin_14;
-		}
-		else
-		{
-			GPIOD->BSRRH = GPIO_Pin_14;
-		}
-		if (Axes_Data.X < -200)
-		{
-			VCP_put_char('A');
-			GPIOD->BSRRL = GPIO_Pin_12;
+			/* Turn LEDS on or off */
+			/* Check X axes */
+			if (Axes_Data.X > 200)
+			{
+				VCP_put_char('D');
+				GPIOD->BSRRL = GPIO_Pin_14; // RED LED
+			}
+			else
+			{
+				GPIOD->BSRRH = GPIO_Pin_14;
+			}
+			if (Axes_Data.X < -200)
+			{
+				VCP_put_char('A');
+				GPIOD->BSRRL = GPIO_Pin_12; // GREEN LED
+			}
+			else
+			{
+				GPIOD->BSRRH = GPIO_Pin_12;
+			}
 
-		}
-		else
-		{
-			GPIOD->BSRRH = GPIO_Pin_12;
-			//TM_DISCO_LedOff(LED_GREEN);
-		}
+			uint8_t theByte;
+			if (VCP_get_char(&theByte))
+			{
+				if(theByte == 'H')
+				{
+					GPIOD->BSRRL = GPIO_Pin_13; //ORANGE LED
+					GPIOD->BSRRL = GPIO_Pin_15; // BLUE LED
+					TM_Time2 = 10;
+				}
 
-		/* Check Y axes */
-//		if (Axes_Data.Y > 200)
-//		{
-//			//VCP_put_char('W');
-//			GPIOD->BSRRL = GPIO_Pin_13;
-//		}
-//		else
-//		{
-//			GPIOD->BSRRH = GPIO_Pin_13;
-//		}
-//		if (Axes_Data.Y < -200)
-//		{
-//			//VCP_put_char('S');
-//			GPIOD->BSRRL = GPIO_Pin_15;
-//		}
-//		else
-//		{
-//			GPIOD->BSRRH = GPIO_Pin_15;
-//		}
+				else if(theByte == 'B')
+				{
+					GPIOD->BSRRL = GPIO_Pin_13; // ORANGE LED
+					TM_Time2 = 10;
+				}
 
-		if (VCP_get_char('X'))
-		{
-			GPIOD->BSRRL = GPIO_Pin_13;
-			GPIOD->BSRRL = GPIO_Pin_15;
-			TM_Time2 = 10;
-		}
-		if (0 == TM_Time2)
-		{
-			//TM_DISCO_LedOn(LED_GREEN);
-			GPIOD->BSRRH = GPIO_Pin_13;
-			GPIOD->BSRRH = GPIO_Pin_15;
-		}
+				else if(theByte == 'I')
+				{
+					GPIO_SetBits(GPIOD,GPIO_Pin_12);
+					GPIO_SetBits(GPIOD,GPIO_Pin_13);
+					GPIO_SetBits(GPIOD,GPIO_Pin_14);
+					GPIO_SetBits(GPIOD,GPIO_Pin_15);
 
-		/* If there's data on the virtual serial port:
-		 *  - Echo it back
-		 *  - Turn the green LED on for 10ms
-		 */
-//		uint8_t theByte;
-//		if (VCP_get_char(&theByte))
-//		{
-//			VCP_put_char(theByte);
-//
-//			TM_DISCO_LedOn(LED_GREEN);
-//			//GPIOD->BSRRL = GPIO_Pin_12;
-//			downTicker = 10;
-//		}
-//		if (0 == downTicker)
-//		{
-//			//TM_DISCO_LedOn(LED_GREEN);
-//			//GPIOD->BSRRH = GPIO_Pin_12;
-//		}
+					TIM_Cmd(TIM5, ENABLE);
+					TIM_ClearFlag(TIM5, TIM_FLAG_Update);
+
+					uint8_t LED_Selector = 1;
+
+					for (LED_Selector = 1; LED_Selector < 5; LED_Selector++)
+					{
+						TIM_Cmd(TIM5, ENABLE);
+						while (!TIM_GetFlagStatus(TIM5, TIM_FLAG_Update));
+
+						if (TIM_GetFlagStatus(TIM5, TIM_FLAG_Update))
+						{
+
+							switch (LED_Selector)
+							{
+							case 1:
+								GPIO_ToggleBits(GPIOD, GPIO_Pin_12);
+								break;
+							case 2:
+								GPIO_ToggleBits(GPIOD, GPIO_Pin_13);
+								break;
+							case 3:
+								GPIO_ToggleBits(GPIOD, GPIO_Pin_14);
+								break;
+							case 4:
+								GPIO_ToggleBits(GPIOD, GPIO_Pin_15);
+								break;
+
+							}
+							TIM_ClearFlag(TIM5, TIM_FLAG_Update);
+							TIM_Cmd(TIM5, DISABLE);
+						}
+					}
+				}
+
+				else if(theByte == 'R')
+				{
+					GPIOD->BSRRL = GPIO_Pin_15; // BLUE LED
+					TM_Time2 = 10;
+				}
+			}
+			if (0 == TM_Time2)
+			{
+				GPIOD->BSRRH = GPIO_Pin_13;
+				GPIOD->BSRRH = GPIO_Pin_15;
+			}
+
+			TIM_ClearFlag(TIM2, TIM_FLAG_Update);
+			TIM_Cmd(TIM2, DISABLE);
+		}
 	}
-
 	return 0;
 }
 
@@ -208,14 +211,11 @@ void init()
 	LED_Config.GPIO_PuPd = GPIO_PuPd_NOPULL;
 	GPIO_Init(GPIOD, &LED_Config);
 
-
-
 	/* Setup SysTick or CROD! */
 	if (SysTick_Config(SystemCoreClock / 1000))
 	{
 		ColorfulRingOfDeath();
 	}
-
 
 	/* Setup USB */
 	USBD_Init(&USB_OTG_dev,
@@ -225,6 +225,28 @@ void init()
 	            &USR_cb);
 
 	return;
+}
+
+void timer()
+{
+	RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM2, ENABLE);
+    TIM_TimeBaseInitTypeDef TIM_TimeBaseStructure;
+    TIM_TimeBaseStructure.TIM_Period = 150-1;
+    TIM_TimeBaseStructure.TIM_Prescaler = 168000-1;
+    TIM_TimeBaseStructure.TIM_ClockDivision = TIM_CKD_DIV1;
+    TIM_TimeBaseStructure.TIM_CounterMode =  TIM_CounterMode_Up;
+    TIM_TimeBaseInit(TIM2, &TIM_TimeBaseStructure);
+}
+
+void timer5()
+{
+	RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM5, ENABLE);
+	TIM_TimeBaseInitTypeDef TIM_TimeBaseStructure;
+	TIM_TimeBaseStructure.TIM_Period = 150-1;
+	TIM_TimeBaseStructure.TIM_Prescaler = 168000-1;
+	TIM_TimeBaseStructure.TIM_ClockDivision = TIM_CKD_DIV1;
+	TIM_TimeBaseStructure.TIM_CounterMode =  TIM_CounterMode_Up;
+	TIM_TimeBaseInit(TIM5, &TIM_TimeBaseStructure);
 }
 
 /*
@@ -250,19 +272,6 @@ void ColorfulRingOfDeath(void)
 		GPIOD->BSRRL = (ring << 12);
 	}
 }
-
-/*
- * Interrupt Handlers
- */
-
-//void SysTick_Handler(void)
-//{
-//	ticker++;
-//	if (downTicker > 0)
-//	{
-//		downTicker--;
-//	}
-//}
 
 void NMI_Handler(void)       {}
 void HardFault_Handler(void) { ColorfulRingOfDeath(); }

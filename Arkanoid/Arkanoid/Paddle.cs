@@ -35,15 +35,10 @@ namespace Arkanoid
         {
             paper.DrawImage(paddleImage, paddleRec);
         }
-
-        //public void movePaddle(int mouseX)
-        //{
-        //    paddleRec.X = mouseX - (paddleRec.Width / 2);
-        //}
-
+        
         public void movePaddlebyKeyboard(char Key)
         {
-
+            /* przesunięcie paletki w lewo */
             if ((Key == 'a') || (Key == 'A'))
             {
                 paddleRec.X -= (paddleRec.Width / 10);
@@ -53,6 +48,7 @@ namespace Arkanoid
                 }
             }
 
+            /* przesunięcie paletki w prawo */
             if ((Key == 'd') || (Key == 'D'))
             {
                 paddleRec.X += (paddleRec.Width / 10);

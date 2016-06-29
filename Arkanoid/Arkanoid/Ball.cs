@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO.Ports;
 
 namespace Arkanoid
 {
@@ -12,6 +13,9 @@ namespace Arkanoid
         private int x, y, width, height;
         public int xspeed, yspeed;
         private Random randSpeed;
+
+        public static SerialPort port;
+
 
         private Image ballImage;
         private Rectangle ballRec;
@@ -31,8 +35,6 @@ namespace Arkanoid
             get { return yspeed; }
         }
 
-
-
         public Ball()
         {
             randSpeed = new Random();
@@ -41,8 +43,8 @@ namespace Arkanoid
             width = 20;
             height = 20;
 
-            xspeed = randSpeed.Next(2, 3);
-            yspeed = randSpeed.Next(2, 3);
+            xspeed = randSpeed.Next(3, 4);
+            yspeed = randSpeed.Next(3, 4);
 
             ballImage = Arkanoid.Properties.Resources.ball2;
 
@@ -65,24 +67,36 @@ namespace Arkanoid
             ballRec.Y += yspeed;
         }
 
+        /* dotknięcie ścianek przez piłkę */
         public void collision()
         {
             if (ballRec.X < 0 || ballRec.X > 760)
             {
                 xspeed *= -1;
+                char[] x = new char[1];
+                x[0] = 'B'; // zapala się pomarańczowa dioda
+                port.Write(x, 0, 1);
+                
             }
             if (ballRec.Y < 0)
             {
                 yspeed *= -1;
+                char[] x = new char[1];
+                x[0] = 'B';
+                port.Write(x, 0, 1);
             }
          
         }
 
+        /* dotknięcie paletki przez piłkę */
         public void hitPaddle(Rectangle paddleRec)
         {
             if(paddleRec.IntersectsWith(ballRec))
             {
                 yspeed *= -1;
+                char[] x = new char[1];
+                x[0] = 'R'; // zapala się niebieska dioda
+                port.Write(x, 0, 1);
             }
         }
     }

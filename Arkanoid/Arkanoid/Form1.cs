@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.IO.Ports
+using System.IO.Ports;
 
 namespace Arkanoid
 {
@@ -34,6 +34,7 @@ namespace Arkanoid
             serialPort1.BaudRate = 9600;
             serialPort1.Open();
 
+            Ball.port = serialPort1;
         }
 
         private void Form1_Paint(object sender, PaintEventArgs e)
@@ -43,12 +44,6 @@ namespace Arkanoid
             ball.drawBall(paper);
         }
 
-        //private void Form1_MouseMove(object sender, MouseEventArgs e)
-        //{
-        //    paddle.movePaddle(e.X);
-        //    this.Invalidate();
-        //}
-
         private void timer1_Tick(object sender, EventArgs e)
         {
             ball.moveBall();
@@ -56,8 +51,25 @@ namespace Arkanoid
             ball.hitPaddle(paddle.PaddleRec);
             this.Invalidate();
 
-            if (ball.BallRec.Y > 600) youLose.Visible = true;
-            if (RecBricks.Count == 0) youWon.Visible = true;
+            /* przegrana */
+            if (ball.BallRec.Y > 600)
+            {
+                youLose.Visible = true;
+                char[] x = new char[1];
+                x[0] = 'I'; // wszystkie diody świecą się w koło
+                serialPort1.Write(x, 0, 1);
+            }
+
+            /* wygrana */
+            if (RecBricks.Count == 0)
+            {
+                youWon.Visible = true;
+                char[] x = new char[1];
+                x[0] = 'I';
+                serialPort1.Write(x, 0, 1);
+            }
+
+            /* zbicie cegiełki */
             foreach (KeyValuePair<string, Rectangle> kvp in RecBricks)
             {
                 if (kvp.Value.IntersectsWith(ball.BallRec))
@@ -67,13 +79,11 @@ namespace Arkanoid
                     this.Controls.Remove(this.Controls.Find(kvp.Key, true).FirstOrDefault());
                     RecBricks.Remove(kvp.Key);
                     char[] x = new char[1];
-                    x[0] = 'X';
+                    x[0] = 'H'; // zapala się pomarańczowa i niebieska dioda
                     serialPort1.Write(x, 0, 1);
                     break;               
                 }
-
             }
-
         }
 
         private void ArkanoidForm_KeyPress(object sender, KeyPressEventArgs e)
@@ -81,11 +91,10 @@ namespace Arkanoid
             paddle.movePaddlebyKeyboard(e.KeyChar);
         }
 
-        private void serialPort1_DataReceived(object sender, System.IO.Ports.SerialDataReceivedEventArgs e)
+        private void serialPort1_DataReceived(object sender, SerialDataReceivedEventArgs e)
         {
             char data = Convert.ToChar(serialPort1.ReadChar());
             paddle.movePaddlebyKeyboard(data);
-
         }
     }
 }
